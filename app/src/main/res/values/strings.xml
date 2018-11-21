@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LOLAndroidApp</string>
+    <string name="summoner_name">Summoner Name</string>
+    <string name="submit">Submit</string>
 </resources>
