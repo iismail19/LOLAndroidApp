@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Requests {
+public class Requests{
 
     public JSONObject getRequest(String requestURL) throws IOException, JSONException {
         URL link = new URL(requestURL);
