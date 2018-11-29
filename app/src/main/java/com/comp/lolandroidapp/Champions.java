@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Champions {
 
-    static HashMap<Integer, String> championIdtoName = new HashMap<>();
+    public static HashMap<Integer, String> championIdtoName = new HashMap<>();
     // works in static context if outside of main
     static {
         championIdtoName.put(1, "Annie");
