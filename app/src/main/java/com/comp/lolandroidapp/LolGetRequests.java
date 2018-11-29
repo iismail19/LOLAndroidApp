@@ -14,20 +14,26 @@ public class LolGetRequests {
     }
      */
 
-
     // URL+Request+?api_key=+API_KEY
     final String API_Key = "RGAPI-86d89a5d-3b70-457b-adc6-610afab42ba7";
     final String BASE_API = "?api_key=";
     final String BASE_URL = "https://na1.api.riotgames.com";
 
     // Returned in JSONobject
-    String requestSummonerByName(String sName){
+    public String requestSummonerByName(String sName){
         String requestUrl = "/lol/summoner/v3/summoners/by-name/";
         return BASE_URL + requestUrl + sName + BASE_API + API_Key;
     }
 
+    // Return in a JSONArray
+    // Example request for JSON view: https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/203344624?api_key=RGAPI-86d89a5d-3b70-457b-adc6-610afab42ba7
+    public String requestMatchHistory(long accountId){
+        String requestUrl = "https://na1.api.riotgames.com/lol/match/v3/matchlists/by-account/";
+        return BASE_URL + requestUrl + accountId + BASE_API + API_Key;
+    }
+
     // Returned in a JSONArray
-    String requestChampionMasteries(long summonerId){
+    public String requestChampionMasteries(long summonerId){
         String requestUrl = "/lol/champion-mastery/v3/champion-masteries/by-summoner/";
         return BASE_URL + requestUrl + summonerId + BASE_API + API_Key;
     }
@@ -43,7 +49,7 @@ public class LolGetRequests {
         return BASE_URL + requestUrl + summonerId + BASE_API + API_Key;
     }
 
-
+    /*  This is for optional Requirements later */
     String requestSpectateActiveGameBySummoner(long summonerId){
         String requestUrl = "/lol/spectator/v3/active-games/by-summoner/";
         return BASE_URL + requestUrl + summonerId + BASE_API + API_Key;

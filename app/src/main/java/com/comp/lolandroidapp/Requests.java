@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class Requests{
 
-    public JSONObject getRequest(String requestURL) throws IOException, JSONException {
+    public static JSONObject getRequest(String requestURL) throws IOException, JSONException {
         URL link = new URL(requestURL);
         HttpURLConnection connect = (HttpURLConnection) link.openConnection();
         // response code: tells us if the request url is successful
@@ -30,7 +30,7 @@ public class Requests{
     }
 
     // if JSON is an array/list use this
-    public JSONArray getRequestArray(String requestURL) throws IOException, JSONException{
+    public static JSONArray getRequestArray(String requestURL) throws IOException, JSONException{
         URL link = new URL(requestURL);
         HttpURLConnection connect = (HttpURLConnection) link.openConnection();
         // response code: tells us if the request url is successful
@@ -49,7 +49,7 @@ public class Requests{
     }
 
     // if single line don't need a JSON formatted object
-    public String getRequestLine(String requestURL) throws IOException, JSONException {
+    public static String getRequestLine(String requestURL) throws IOException, JSONException {
         URL link = new URL(requestURL);
         HttpURLConnection connect = (HttpURLConnection) link.openConnection();
         // response code: tells us if the request url is successful
