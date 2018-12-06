@@ -33,9 +33,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast t = Toast.makeText(getApplicationContext(), summonerName.getText().toString(), Toast.LENGTH_SHORT);
                 t.show();
+                Log.d("Passed Toast", "works ");
                 try {
                     JSONObject x = theRequest.getRequest(lolRequests.requestSummonerByName(summonerName.getText().toString()));
-                    //String results = x.get()
+                    //String results = x.get();
+                    Log.d("Json", "This is the json: " + x);
+
+                    //phil - start creating the view components in this xml; if not you'll have to create ten diff table cells
+                    // with their text --> would have to create unique id's for each cells
+                    // uses lolRequest variables w/ class methods for calling diff endpoints on the api and returns json
+                    // THIS METHOD DOESN'T WORK.
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
@@ -44,7 +51,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
 }
