@@ -26,8 +26,8 @@
 
     <EditText
         android:id="@+id/summonerID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="193dp"
+        android:layout_height="52dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -35,12 +35,13 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Summoner Name"
+        android:textAlignment="viewEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="0.857"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/scrollView3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.025" />
 
     <ImageView
         android:id="@+id/summonerAvatar"
@@ -49,10 +50,10 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="@+id/scrollView3"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.026"
         app:layout_constraintStart_toStartOf="@+id/scrollView3"
         app:layout_constraintTop_toTopOf="@+id/scrollView3"
-        app:layout_constraintVertical_bias="0.019"
+        app:layout_constraintVertical_bias="0.027"
         tools:srcCompat="@tools:sample/avatars" />
 
     <HorizontalScrollView
