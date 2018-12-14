@@ -1,5 +1,11 @@
 package com.comp.lolandroidapp;
 
 public class Game {
-    //TODO: backend, help needed this one needs careful planning
+    int championId;
+    Boolean winStatus;
+
+    public Game (int champ, Boolean win) {
+        this.championId = champ;
+        this.winStatus = win;
+    }
 }

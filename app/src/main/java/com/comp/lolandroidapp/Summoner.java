@@ -42,9 +42,24 @@ public class Summoner {
     }
 
     // Games for this summoner
-    public LinkedList<Game> requestMatches(JSONArray jsonArray){
+    public LinkedList<Game> requestMatches(JSONObject jsonObject, long accountId){
         LinkedList<Game> currentMatches = new LinkedList<>();
-        //TODO get the needed Data, finish the game class first
+        //okay this is the return match part
+        JSONArray participantId = jsonObject.getJSONArray("participantIdentities");
+        JSONObject indexPlayer;
+        int testAccount;
+        int playerIndex = -1;
+
+        for (int i = 0; i<10; i++) {
+            //can probably combine two below
+            indexPlayer = participantId.getJSONObject(i);
+            testAccount = indexPlayer.getJSONObject("player").getInt("accountId");
+            if (accountId==testAccount) {
+                playerIndex = i;
+                break;
+            }
+        }
+        Boolean win2 = jsonObject.getJSONArray("participants").getJSONObject(playerIndex).getJSONObject("stats").getBoolean("win");
         return currentMatches;
     }
 }
