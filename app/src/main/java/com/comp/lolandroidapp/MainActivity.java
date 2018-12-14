@@ -40,22 +40,33 @@ public class MainActivity extends AppCompatActivity {
                 t.show();
                 Log.d("Passed Toast", "works "+ summonerName.getText().toString());
                 String url = lolRequests.requestSummonerByName(summonerName.getText().toString());
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, new Response.Listener<JSONObject>() {
+                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(JSONObject response) {
-                        Log.d("pass", response.toString());
+                    public void onResponse(JSONObject response){
+                        try{
+                            long num = response.getLong("accountId");
+                            summonerName.setText(Long.toString(num));
+                            Log.d("pass", response.toString());
+                        }
+                        catch (JSONException e){
+                            Log.d("pass", "catch");
+                        }
+
+
+
                     }
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.d("Error", "no idea why yet");
+                        Log.d("pass", "no idea why yet-- error");
                     }
                 });{
                 }
 
-
             }
         });
     }
+
+
 
 }
