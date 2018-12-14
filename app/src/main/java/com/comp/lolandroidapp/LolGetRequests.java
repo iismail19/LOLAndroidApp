@@ -18,7 +18,7 @@ public class LolGetRequests {
     final String API_Key = "RGAPI-86d89a5d-3b70-457b-adc6-610afab42ba7";
     final String BASE_API = "?api_key=";
     final String BASE_URL = "https://na1.api.riotgames.com";
-
+// https://na1.api.riotgames.com/lol/summoner/v3/summoners/by-name/DeathDragon97?api_key=RGAPI-86d89a5d-3b70-457b-adc6-610afab42ba7
     // Returned in JSONobject
     public String requestSummonerByName(String sName){
         String requestUrl = "/lol/summoner/v3/summoners/by-name/";

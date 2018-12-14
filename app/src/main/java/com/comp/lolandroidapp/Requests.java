@@ -1,5 +1,7 @@
 package com.comp.lolandroidapp;
 
+import android.util.Log;
+
 import org.json.*;
 
 import java.io.BufferedReader;
@@ -10,11 +12,12 @@ import java.net.URL;
 
 public class Requests{
 
-    public static JSONObject getRequest(String requestURL) throws IOException, JSONException {
+    public JSONObject getRequest(String requestURL) throws IOException, JSONException {
         URL link = new URL(requestURL);
         HttpURLConnection connect = (HttpURLConnection) link.openConnection();
         // response code: tells us if the request url is successful
         int responeCode = connect.getResponseCode();
+        Log.d("Pass", "Status code is 200, app should get data");
         // returns the response from the link
         BufferedReader in = new BufferedReader(new InputStreamReader(connect.getInputStream()));
         String line;
@@ -27,6 +30,7 @@ public class Requests{
         connect.disconnect();
         JSONObject responseData = new JSONObject(response.toString());
         return  responseData;
+
     }
 
     // if JSON is an array/list use this
