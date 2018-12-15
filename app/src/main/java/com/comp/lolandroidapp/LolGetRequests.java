@@ -32,6 +32,12 @@ public class LolGetRequests {
         return BASE_URL + requestUrl + accountId + BASE_API + API_Key;
     }
 
+    // https://na1.api.riotgames.com/lol/match/v3/matches/2919167105?api_key=RGAPI-86d89a5d-3b70-457b-adc6-610afab42ba7
+    public String requestMatchInfo(long gameId) {
+       String requestUrl = "https://na1.api.riotgames.com/lol/match/v3/matches/";
+       return BASE_URL + requestUrl + gameId + BASE_API + API_Key;
+    }
+
     // Returned in a JSONArray
     public String requestChampionMasteries(long summonerId){
         String requestUrl = "/lol/champion-mastery/v3/champion-masteries/by-summoner/";
