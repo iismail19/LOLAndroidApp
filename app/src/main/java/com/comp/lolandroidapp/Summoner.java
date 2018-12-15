@@ -11,11 +11,11 @@ import java.util.LinkedList;
 
 public class Summoner {
 
-    private long summonerId;
-    private String summonerName;
-    private long summonerLevel;
-    private long accountId;
-    private LinkedList<Game> recentMatches = new LinkedList<>();
+    public long summonerId;
+    public String summonerName;
+    public long summonerLevel;
+    public long accountId;
+    public LinkedList<Game> recentMatches = new LinkedList<>();
 
     // Self initializing summoner
     public static Summoner createSummonerFromJson(JSONObject jsonObject){

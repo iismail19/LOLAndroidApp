@@ -49,28 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 RequestParams params = new RequestParams();
                 request(params, url);
 
-//                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response){
-//                        try{
-//                            long num = response.getLong("accountId");
-//                            summonerName.setText(Long.toString(num));
-//                            Log.d("pass", response.toString());
-//                        }
-//                        catch (JSONException e){
-//                            Log.d("pass", "catch");
-//                        }
-//
-//
-//
-//                    }
-//                }, new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.d("pass", "no idea why yet-- error");
-//                    }
-//                });
-
             }
         });
     }
@@ -81,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject resposne){
                 Log.d("pass", "onSucess()" + resposne.toString());
+                Summoner player = Summoner.createSummonerFromJson(resposne);
+                Log.d("pass", Long.toString(player.accountId) + " " + player.summonerName);
             }
 //            @Override
 //            public void onFailure(){}
