@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("pass", Long.toString(player.accountId) + " " + player.summonerName);
                 Intent myIntent = new Intent(MainActivity.this, summoner_returned.class);
                 myIntent.putExtra("summonerName", player.summonerName);
+
+                Log.d("pass", player.winPercentage);
+                myIntent.putExtra("winP", player.winPercentage);
                 startActivity(myIntent);
             }
 //            @Override
