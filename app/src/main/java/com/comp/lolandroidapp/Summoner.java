@@ -52,7 +52,7 @@ public class Summoner {
     }
 
     // Games for this summoner
-    public LinkedList<Game> requestMatches() throws JSONException{
+    public void requestMatches() throws JSONException{
         LinkedList<Game> currentMatches = new LinkedList<>();
         //JSON obj is from request that has matchlist
         LolGetRequests lolRequests = new LolGetRequests();
@@ -91,7 +91,6 @@ public class Summoner {
         double goodPercent = percentWon * 100;
         winPercentage = goodPercent + "%";
         
-        return currentMatches;
     }
 
     public Game getGameInfo(JSONObject jsonObject)  throws JSONException{
