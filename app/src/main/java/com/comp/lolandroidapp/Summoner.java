@@ -57,7 +57,7 @@ public class Summoner {
             JSONObject individualMatches = match.getJSONObject(i);
             long gameId = individualMatches.getLong("gameId");
 
-            // Request with actual game
+            // Request with actual game - send gameId to actual request
             // https://na1.api.riotgames.com/lol/match/v3/matches/2919167105?api_key=RGAPI-86d89a5d-3b70-457b-adc6-610afab42ba7
 
             //  Boolean winStatus = returnWinStatus(accountId, gameId);
@@ -73,6 +73,27 @@ public class Summoner {
         return currentMatches;
     }
 
+    public Game getGameInfo(JSONObject jsonObject, long accountId) {
+        JSONArray participantId = jsonObject.getJSONArray("participantIdentities");
+        JSONObject indexPlayer;
+        int testAccount;
+        int playerIdIndex = -1;
 
+        for (int i = 0; i<10; i++) {
+            //can probably combine two below
+            indexPlayer = participantId.getJSONObject(i);
+            testAccount = indexPlayer.getJSONObject("player").getInt("accountId");
+            if (accountId==testAccount) {
+
+                playerIdIndex = i;
+                break;
+            }
+        }
+
+        Boolean win = jsonObject.getJSONArray("participants").getJSONObject(playerIdIndex).getJSONObject("stats").getBoolean("win");
+        int champion = jsonObject.getJSONArray("participants").getJSONObject(playerIdIndex).getInt("championId");
+        Game game = new Game(champion, win);
+        return game;
+    }
 
 }
