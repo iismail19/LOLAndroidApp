@@ -26,13 +26,13 @@ public class Summoner {
             newSummoner.summonerName = jsonObject.getString("name");
             newSummoner.accountId = jsonObject.getLong("accountId");
             newSummoner.summonerLevel = jsonObject.getLong("summonerLevel");
-            try {
-                newSummoner.recentMatches = newSummoner.requestMatches(Requests.getRequestArray(lolGetRequests.requestMatchHistory(newSummoner.accountId)), newSummoner.accountId);
-                Log.d("LeagueApp", "createSummonerFromJson: success");
-            }catch (IOException e){
-                e.printStackTrace();
-                Log.d("LeagueApp", "createSummonerFromJson: failed");
-            }
+//            try {
+//                newSummoner.recentMatches = newSummoner.requestMatches(Requests.getRequestArray(lolGetRequests.requestMatchHistory(newSummoner.accountId)), newSummoner.accountId);
+//                Log.d("LeagueApp", "createSummonerFromJson: success");
+//            }catch (IOException e){
+//                e.printStackTrace();
+//                Log.d("LeagueApp", "createSummonerFromJson: failed");
+//            }
             return newSummoner;
 
         }catch (JSONException e){

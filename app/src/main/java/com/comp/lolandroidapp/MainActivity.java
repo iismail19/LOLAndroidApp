@@ -14,11 +14,17 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+
+import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
     // Member Variables (Global)
@@ -40,30 +46,45 @@ public class MainActivity extends AppCompatActivity {
                 t.show();
                 Log.d("Passed Toast", "works "+ summonerName.getText().toString());
                 String url = lolRequests.requestSummonerByName(summonerName.getText().toString());
-                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response){
-                        try{
-                            long num = response.getLong("accountId");
-                            summonerName.setText(Long.toString(num));
-                            Log.d("pass", response.toString());
-                        }
-                        catch (JSONException e){
-                            Log.d("pass", "catch");
-                        }
+                RequestParams params = new RequestParams();
+                request(params, url);
 
-
-
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.d("pass", "no idea why yet-- error");
-                    }
-                });{
-                }
+//                JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+//                    @Override
+//                    public void onResponse(JSONObject response){
+//                        try{
+//                            long num = response.getLong("accountId");
+//                            summonerName.setText(Long.toString(num));
+//                            Log.d("pass", response.toString());
+//                        }
+//                        catch (JSONException e){
+//                            Log.d("pass", "catch");
+//                        }
+//
+//
+//
+//                    }
+//                }, new Response.ErrorListener() {
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Log.d("pass", "no idea why yet-- error");
+//                    }
+//                });
 
             }
+        });
+    }
+    public void request(RequestParams params, String url){
+        AsyncHttpClient client = new AsyncHttpClient();
+        Log.d("pass", url);
+        client.get(url, params, new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject resposne){
+                Log.d("pass", "onSucess()" + resposne.toString());
+            }
+//            @Override
+//            public void onFailure(){}
+
         });
     }
 
