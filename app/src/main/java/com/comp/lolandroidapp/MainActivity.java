@@ -1,5 +1,6 @@
 package com.comp.lolandroidapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -61,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("pass", "onSucess()" + resposne.toString());
                 Summoner player = Summoner.createSummonerFromJson(resposne);
                 Log.d("pass", Long.toString(player.accountId) + " " + player.summonerName);
+                Intent myIntent = new Intent(MainActivity.this, summoner_returned.class);
+                myIntent.putExtra("accountId", Long.toString(player.accountId));
+                startActivity(myIntent);
             }
 //            @Override
 //            public void onFailure(){}
