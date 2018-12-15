@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 Summoner player = Summoner.createSummonerFromJson(resposne);
                 Log.d("pass", Long.toString(player.accountId) + " " + player.summonerName);
                 Intent myIntent = new Intent(MainActivity.this, summoner_returned.class);
-                myIntent.putExtra("accountId", Long.toString(player.accountId));
+                myIntent.putExtra("summonerName", player.summonerName);
                 startActivity(myIntent);
             }
 //            @Override
