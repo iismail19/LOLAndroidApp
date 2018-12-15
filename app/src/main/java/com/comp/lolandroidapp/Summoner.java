@@ -44,22 +44,35 @@ public class Summoner {
     // Games for this summoner
     public LinkedList<Game> requestMatches(JSONObject jsonObject, long accountId){
         LinkedList<Game> currentMatches = new LinkedList<>();
-        //okay this is the return match part
-        JSONArray participantId = jsonObject.getJSONArray("participantIdentities");
-        JSONObject indexPlayer;
-        int testAccount;
-        int playerIndex = -1;
+        //JSON obj is from request that has matchlist
+        int wonGames = 0;
+        int numOfGames = 20;
 
-        for (int i = 0; i<10; i++) {
-            //can probably combine two below
-            indexPlayer = participantId.getJSONObject(i);
-            testAccount = indexPlayer.getJSONObject("player").getInt("accountId");
-            if (accountId==testAccount) {
-                playerIndex = i;
-                break;
-            }
+        JSONArray match = jsonObject.getJSONArray("matches");
+        if (match.length()<20)
+            numOfGames=match.length();
+        //get win percentage
+        for (int i=0; i<numOfGames; i++) {
+            //System.out.println(match);
+            JSONObject individualMatches = match.getJSONObject(i);
+            long gameId = individualMatches.getLong("gameId");
+
+            // Request with actual game
+            // https://na1.api.riotgames.com/lol/match/v3/matches/2919167105?api_key=RGAPI-86d89a5d-3b70-457b-adc6-610afab42ba7
+
+            //  Boolean winStatus = returnWinStatus(accountId, gameId);
+            // System.out.println(winStatus);
+            // if (winStatus) {
+            //     wonGames++;
+            //}
         }
-        Boolean win2 = jsonObject.getJSONArray("participants").getJSONObject(playerIndex).getJSONObject("stats").getBoolean("win");
+
+        double percentWon = wonGames/numOfGames;
+        double goodPercent = percentWon * 100;
+        System.out.println(goodPercent + "%");
         return currentMatches;
     }
+
+
+
 }
