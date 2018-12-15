@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class Requests{
 
-    public JSONObject getRequest(String requestURL) throws IOException, JSONException {
+    public static JSONObject getRequest(String requestURL) throws IOException, JSONException {
         URL link = new URL(requestURL);
         HttpURLConnection connect = (HttpURLConnection) link.openConnection();
         // response code: tells us if the request url is successful

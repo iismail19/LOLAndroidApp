@@ -27,7 +27,7 @@ public class Summoner {
             newSummoner.accountId = jsonObject.getLong("accountId");
             newSummoner.summonerLevel = jsonObject.getLong("summonerLevel");
             try {
-                newSummoner.recentMatches = newSummoner.requestMatches(Requests.getRequestArray(lolGetRequests.requestMatchHistory(newSummoner.accountId)));
+                newSummoner.recentMatches = newSummoner.requestMatches(Requests.getRequestArray(lolGetRequests.requestMatchHistory(newSummoner.accountId)), newSummoner.accountId);
                 Log.d("LeagueApp", "createSummonerFromJson: success");
             }catch (IOException e){
                 e.printStackTrace();
@@ -42,7 +42,7 @@ public class Summoner {
     }
 
     // Games for this summoner
-    public LinkedList<Game> requestMatches(JSONObject jsonObject, long accountId){
+    public LinkedList<Game> requestMatches(JSONObject jsonObject, long accountId) throws JSONException{
         LinkedList<Game> currentMatches = new LinkedList<>();
         //okay this is the return match part
         JSONArray participantId = jsonObject.getJSONArray("participantIdentities");
