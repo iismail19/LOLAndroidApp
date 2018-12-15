@@ -59,17 +59,11 @@ public class Summoner {
 
             // Request with actual game - send gameId to actual request
             // https://na1.api.riotgames.com/lol/match/v3/matches/2919167105?api_key=RGAPI-86d89a5d-3b70-457b-adc6-610afab42ba7
+            // should return actual game which will be added to the linkedlist
 
-            //  Boolean winStatus = returnWinStatus(accountId, gameId);
-            // System.out.println(winStatus);
-            // if (winStatus) {
-            //     wonGames++;
-            //}
+            //probably need to make something different for win/loss ratio
         }
-
-        double percentWon = wonGames/numOfGames;
-        double goodPercent = percentWon * 100;
-        System.out.println(goodPercent + "%");
+        
         return currentMatches;
     }
 
