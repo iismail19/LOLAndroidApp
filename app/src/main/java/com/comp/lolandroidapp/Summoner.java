@@ -67,7 +67,7 @@ public class Summoner {
         return currentMatches;
     }
 
-    public Game getGameInfo(JSONObject jsonObject, long accountId) {
+    public Game getGameInfo(JSONObject jsonObject, long accountId)  throws JSONException{
         JSONArray participantId = jsonObject.getJSONArray("participantIdentities");
         JSONObject indexPlayer;
         int testAccount;
